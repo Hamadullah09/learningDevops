@@ -38,10 +38,3 @@ def start_socket_server(host="127.0.0.1", port=9000):
     server.bind((host, port))
     server.listen(10)
     print(f"[Coordinator] Listening on {host}:{port}")
-
-    while True:
-        conn, addr = server.accept()
-        threading.Thread(target=handle_agent, args=(conn, addr), daemon=True).start()
-
-if __name__ == "__main__":
-    start_socket_server()
